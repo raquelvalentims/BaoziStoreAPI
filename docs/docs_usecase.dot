@@ -1,0 +1,44 @@
+digraph BaoziUseCases {
+  graph [rankdir=LR, bgcolor="white", pad=0.25, nodesep=0.35, ranksep=0.7, splines=ortho, fontname="Arial", labelloc="t", label="DIAGRAMA DE CASO DE USO - API REST BAOZI STORE", fontsize=20];
+  node [fontname="Arial", fontsize=10];
+  edge [fontname="Arial", fontsize=8, color="#526275", penwidth=1.0, arrowsize=0.6];
+  ator [shape=none, label="Usuário da API", fontsize=12, margin=0, labelloc=b, image="/mnt/data/_baozi_assets/ator_uml.png", imagescale=true, fixedsize=true, width=1.1, height=1.8];
+  subgraph cluster_api {
+    label="API REST Baozi Store"; fontsize=14; fontname="Arial Bold"; color="#294E77"; penwidth=1.6; style="rounded"; margin=18;
+    subgraph cluster_cliente {
+      label="Cliente"; fontsize=12; fontname="Arial Bold"; color="#A7BCD3"; style="rounded";
+      c1 [shape=ellipse, label="Cadastrar cliente", width=1.8, height=0.55];
+      c2 [shape=ellipse, label="Listar clientes", width=1.8, height=0.55];
+      c3 [shape=ellipse, label="Consultar cliente\npor ID", width=1.8, height=0.55];
+      c4 [shape=ellipse, label="Atualizar cliente", width=1.8, height=0.55];
+      c5 [shape=ellipse, label="Excluir cliente", width=1.8, height=0.55];
+      {rank=same; c1; c2; c3; c4; c5;}
+    }
+    subgraph cluster_produto {
+      label="Produto"; fontsize=12; fontname="Arial Bold"; color="#A7BCD3"; style="rounded";
+      p1 [shape=ellipse, label="Cadastrar produto", width=1.8, height=0.55];
+      p2 [shape=ellipse, label="Listar produtos", width=1.8, height=0.55];
+      p3 [shape=ellipse, label="Consultar produto\npor ID", width=1.8, height=0.55];
+      p4 [shape=ellipse, label="Atualizar produto", width=1.8, height=0.55];
+      p5 [shape=ellipse, label="Excluir produto", width=1.8, height=0.55];
+      {rank=same; p1; p2; p3; p4; p5;}
+    }
+    subgraph cluster_pedido {
+      label="Pedido"; fontsize=12; fontname="Arial Bold"; color="#A7BCD3"; style="rounded";
+      o1 [shape=ellipse, label="Registrar pedido", width=1.8, height=0.55];
+      o2 [shape=ellipse, label="Listar pedidos", width=1.8, height=0.55];
+      o3 [shape=ellipse, label="Consultar pedido\npor ID", width=1.8, height=0.55];
+      o4 [shape=ellipse, label="Atualizar pedido", width=1.8, height=0.55];
+      o5 [shape=ellipse, label="Excluir pedido", width=1.8, height=0.55];
+      {rank=same; o1; o2; o3; o4; o5;}
+    }
+  }
+  // Associações do ator com cada caso de uso implementado.
+  ator -> {c1 c2 c3 c4 c5 p1 p2 p3 p4 p5 o1 o2 o3 o4 o5} [dir=none, constraint=false];
+  // Mantém as entidades como três grupos verticais e os casos de uso na ordem CRUD/consulta.
+  c1 -> p1 -> o1 [style=invis, weight=8];
+  c2 -> p2 -> o2 [style=invis, weight=8];
+  c3 -> p3 -> o3 [style=invis, weight=8];
+  c4 -> p4 -> o4 [style=invis, weight=8];
+  c5 -> p5 -> o5 [style=invis, weight=8];
+}

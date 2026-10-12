@@ -1,0 +1,30 @@
+digraph DER {
+  graph [rankdir=LR, bgcolor="white", pad=0.2, nodesep=0.8, ranksep=1.0, splines=ortho, fontname="Arial", labelloc="t", label="MODELO RELACIONAL SIMPLIFICADO", fontsize=20];
+  node [shape=plain, fontname="Arial", fontsize=11];
+  edge [fontname="Arial", fontsize=10, color="#526275", penwidth=1.2, arrowsize=0.7];
+  Cliente [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8" COLOR="#294E77">
+      <TR><TD BGCOLOR="#DCE8F4"><B>CLIENTE</B></TD></TR>
+      <TR><TD ALIGN="LEFT"><B>PK</B> id : Long</TD></TR>
+      <TR><TD ALIGN="LEFT">nome : String</TD></TR>
+      <TR><TD ALIGN="LEFT">clienteDesde : LocalDate</TD></TR>
+    </TABLE>>];
+  Produto [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8" COLOR="#294E77">
+      <TR><TD BGCOLOR="#DCE8F4"><B>PRODUTO</B></TD></TR>
+      <TR><TD ALIGN="LEFT"><B>PK</B> id : Long</TD></TR>
+      <TR><TD ALIGN="LEFT">nome : String</TD></TR>
+      <TR><TD ALIGN="LEFT">preco : BigDecimal</TD></TR>
+      <TR><TD ALIGN="LEFT">estoque : Boolean</TD></TR>
+    </TABLE>>];
+  Pedido [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="8" COLOR="#294E77">
+      <TR><TD BGCOLOR="#DCE8F4"><B>PEDIDO</B></TD></TR>
+      <TR><TD ALIGN="LEFT"><B>PK</B> id : Long</TD></TR>
+      <TR><TD ALIGN="LEFT"><B>FK</B> cliente_id : Long</TD></TR>
+      <TR><TD ALIGN="LEFT"><B>FK</B> produto_id : Long</TD></TR>
+      <TR><TD ALIGN="LEFT">quantidade : Integer</TD></TR>
+    </TABLE>>];
+  Cliente -> Pedido [label="1 : N", dir=both, arrowtail=none, arrowhead=normal];
+  Produto -> Pedido [label="1 : N", dir=both, arrowtail=none, arrowhead=normal];
+}
